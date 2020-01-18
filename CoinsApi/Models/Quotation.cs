@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace CoinsApi.Models
+﻿namespace CoinsApi.Models
 {
     public class Quotation
     {
+        public long Id { get; set; }
         public string moneda { get; set; }
         public double precio { get; set; }
     }
