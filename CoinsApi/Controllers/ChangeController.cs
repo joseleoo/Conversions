@@ -82,7 +82,7 @@ namespace CoinsApi.Controllers
         public async Task<ActionResult<Quotation>> SetQuotation(string Source, int Quantity)
         {
             var httpClient = new HttpClient();
-            var json = await httpClient.GetStringAsync("https://api.cambio.today/v1/quotes/" + Source + "/USD/json?quantity=" + Quantity + "&key=2874|s~L^ud9o65CLVK6dnW30PLHCAUj0ZGiF");
+            var json = await httpClient.GetStringAsync("https://api.cambio.today/v1/quotes/" + Source + "/ARS/json?quantity=" + Quantity + "&key=2874|s~L^ud9o65CLVK6dnW30PLHCAUj0ZGiF");
             var dataConversion = JsonConvert.DeserializeObject<Change>(json);
             Quotation quotation = new Quotation
             {

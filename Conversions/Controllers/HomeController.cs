@@ -27,7 +27,7 @@ namespace Conversions.Controllers
           
             ChangeController change = new ChangeController();
             
-            var quotation = await change.SetQuotation("COP",2);
+            var quotation = await change.SetQuotation("USD",1);
 
             ViewData["moneda"] = quotation.Value.moneda;
             ViewData["precio"] = quotation.Value.precio;
@@ -36,9 +36,30 @@ namespace Conversions.Controllers
 
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Privacy()
         {
-            return View();
+            ChangeController change = new ChangeController();
+
+            var quotation = await change.SetQuotation("BRL", 1);
+
+            ViewData["moneda"] = quotation.Value.moneda;
+            ViewData["precio"] = quotation.Value.precio;
+
+            return View(quotation);
+           
+        }
+
+        public async Task<IActionResult> Euro()
+        {
+            ChangeController change = new ChangeController();
+
+            var quotation = await change.SetQuotation("EUR", 1);
+
+            ViewData["moneda"] = quotation.Value.moneda;
+            ViewData["precio"] = quotation.Value.precio;
+
+            return View(quotation);
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
