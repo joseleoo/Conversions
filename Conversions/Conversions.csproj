@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\CoinsApi\Controllers\ChangeController.cs" Link="Models\ChangeController.cs" />
     <Compile Include="..\CoinsApi\Models\Change.cs" Link="Models\Change.cs" />
     <Compile Include="..\CoinsApi\Models\QuoContext.cs" Link="Models\QuoContext.cs" />
     <Compile Include="..\CoinsApi\Models\Quotation.cs" Link="Models\Quotation.cs" />

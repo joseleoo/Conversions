@@ -54,8 +54,12 @@ namespace CoinsApi.Controllers
         [HttpPost("{moneda}")]
         public async Task<ActionResult<Quotation>> PostQuotation(string moneda)
         {
+         
+          
+         
             var httpClient = new HttpClient();
             var json = await httpClient.GetStringAsync("https://api.cambio.today/v1/quotes/"+ moneda + "/ARS/json?quantity=1&key=2874|s~L^ud9o65CLVK6dnW30PLHCAUj0ZGiF");
+           
             var change = JsonConvert.DeserializeObject<Change>(json);
             Quotation quotation= new Quotation
             {
@@ -67,33 +71,40 @@ namespace CoinsApi.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetQuotation), new { id = quotation.Id }, quotation);
+            
+       
         }
 
         // DELETE: cotizacion/change/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTodoItem(long id)
+        public async Task<IActionResult> DeleteTodoItem()
         {
-            var todoItem = await _context.Quotations.FindAsync(id);
+            var todoItem = await _context.Quotations.ToListAsync();
 
             if (todoItem == null)
             {
                 return NotFound();
             }
 
-            _context.Quotations.Remove(todoItem);
+            _context.Quotations.RemoveRange(todoItem);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
         /// <summary>
-        /// method that is used to show in views cconversions
+        /// method that is used to show in views conversions
         /// </summary>
         /// <param name="Source">origin coin</param>
         /// <param name="Quantity">quantity to convert</param>
         /// <returns></returns>
         public async Task<ActionResult<Quotation>> SetQuotation(string Source, int Quantity)
         {
+            if (_context.Quotations.Where(x => x.moneda == Source).Count()==0)
+            {
+                await PostQuotation(Source);
+            }
+            
             var httpClient = new HttpClient();
             var json = await httpClient.GetStringAsync("https://api.cambio.today/v1/quotes/" + Source + "/ARS/json?quantity=" + Quantity + "&key=2874|s~L^ud9o65CLVK6dnW30PLHCAUj0ZGiF");
             var dataConversion = JsonConvert.DeserializeObject<Change>(json);

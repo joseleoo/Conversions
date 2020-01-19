@@ -9,6 +9,7 @@ using Conversions.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
 using CoinsApi.Models;
+using CoinsApi;
 using CoinsApi.Controllers;
 
 namespace Conversions.Controllers
@@ -16,48 +17,60 @@ namespace Conversions.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly QuoContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, QuoContext context)
         {
             _logger = logger;
+            _context = context;
+          
+            if (_context.Quotations.Count() == 0)
+            {
+
+
+                _context.Quotations.Add(new Quotation { moneda = "", precio = 0 });
+                _context.SaveChanges();
+            }
         }
 
         public async Task<IActionResult> Index()
         {
-          
-            ChangeController change = new ChangeController();
+        
+
+        ChangeController change = new ChangeController(_context);
             
             var quotation = await change.SetQuotation("USD",1);
 
             ViewData["moneda"] = quotation.Value.moneda;
             ViewData["precio"] = quotation.Value.precio;
+            ViewData["url"] = "https://localhost:" + Request.Host.Port + "/cotizacion/change/USD";
 
             return View(quotation);
 
         }
 
-        public async Task<IActionResult> Privacy()
+        public async Task<IActionResult> Real()
         {
-            ChangeController change = new ChangeController();
+            ChangeController change = new ChangeController(_context);
 
             var quotation = await change.SetQuotation("BRL", 1);
 
             ViewData["moneda"] = quotation.Value.moneda;
             ViewData["precio"] = quotation.Value.precio;
-
+            ViewData["url"] = "https://localhost:" + Request.Host.Port + "/cotizacion/change/BRL";
             return View(quotation);
            
         }
 
         public async Task<IActionResult> Euro()
         {
-            ChangeController change = new ChangeController();
+            ChangeController change = new ChangeController(_context);
 
             var quotation = await change.SetQuotation("EUR", 1);
 
             ViewData["moneda"] = quotation.Value.moneda;
             ViewData["precio"] = quotation.Value.precio;
-
+            ViewData["url"] = "https://localhost:"+ Request.Host.Port + "/cotizacion/change/EUR" ;
             return View(quotation);
 
         }
