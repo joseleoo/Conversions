@@ -10,3 +10,7 @@ function refrescar() {
     //Actualiza la página
     location.reload();
 }
+
+$('.popover-dismiss').popover({
+    trigger: 'focus'
+});

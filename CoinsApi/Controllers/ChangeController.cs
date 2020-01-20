@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 namespace CoinsApi.Controllers
 {
-    [Route("cotizacion/[controller]")]
+    [Route("cotizacion/")]
     [ApiController]
     public class ChangeController : ControllerBase
     {
@@ -16,16 +16,14 @@ namespace CoinsApi.Controllers
         private readonly QuoContext _context;
         public ChangeController(QuoContext context)
         {
-            _context = context;          
-      
-                if (_context.Quotations.Count() == 0)
-                {
+            _context = context;
 
+            if (_context.Quotations.Count() == 0)
+            {
+                _context.Quotations.Add(new Quotation { moneda = "", precio = 0 });
+                _context.SaveChanges();
+            }
 
-                    _context.Quotations.Add(new Quotation { moneda = "", precio = 0 });
-                    _context.SaveChanges();
-                }         
-          
         }
 
         // GET: cotizacion/change
@@ -55,9 +53,9 @@ namespace CoinsApi.Controllers
         public async Task<ActionResult<Quotation>> PostQuotation(string moneda)
         {
             var httpClient = new HttpClient();
-            var json = await httpClient.GetStringAsync("https://api.cambio.today/v1/quotes/"+ moneda + "/ARS/json?quantity=1&key=2874|s~L^ud9o65CLVK6dnW30PLHCAUj0ZGiF");
+            var json = await httpClient.GetStringAsync("https://api.cambio.today/v1/quotes/" + moneda + "/ARS/json?quantity=1&key=2874|s~L^ud9o65CLVK6dnW30PLHCAUj0ZGiF");
             var change = JsonConvert.DeserializeObject<Change>(json);
-            Quotation quotation= new Quotation
+            Quotation quotation = new Quotation
             {
                 moneda = change.result.source,
                 precio = change.result.amount
@@ -87,13 +85,18 @@ namespace CoinsApi.Controllers
         }
 
         /// <summary>
-        /// method that is used to show in views cconversions
+        /// method that is used to show in views conversions
         /// </summary>
         /// <param name="Source">origin coin</param>
         /// <param name="Quantity">quantity to convert</param>
         /// <returns></returns>
         public async Task<ActionResult<Quotation>> SetQuotation(string Source, int Quantity)
         {
+            if (_context.Quotations.Where(x => x.moneda == Source).Count() == 0)
+            {
+                await PostQuotation(Source);
+            }
+
             var httpClient = new HttpClient();
             var json = await httpClient.GetStringAsync("https://api.cambio.today/v1/quotes/" + Source + "/ARS/json?quantity=" + Quantity + "&key=2874|s~L^ud9o65CLVK6dnW30PLHCAUj0ZGiF");
             var dataConversion = JsonConvert.DeserializeObject<Change>(json);
@@ -103,6 +106,32 @@ namespace CoinsApi.Controllers
                 precio = dataConversion.result.amount
             };
             return quotation;
+
+        }
+        /// <summary>
+        /// convert the initials of the coins
+        /// </summary>
+        /// <param name="initial">initial</param>
+        /// <returns></returns>
+        private string Initials(string initial)
+        {
+            string coinName="";
+            switch (initial)
+            {
+                case "USD":
+                    coinName = "dolar";
+                    break;
+                case "BRL":
+                    coinName = "real";
+                    break;
+                case "EUR":
+                    coinName = "euro";
+                    break;
+                default:
+                    coinName = initial;
+                    break;
+            }
+            return coinName;
 
         }
 

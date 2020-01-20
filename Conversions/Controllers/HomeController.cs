@@ -43,7 +43,7 @@ namespace Conversions.Controllers
 
             ViewData["moneda"] = quotation.Value.moneda;
             ViewData["precio"] = quotation.Value.precio;
-            ViewData["url"] = "https://localhost:" + Request.Host.Port + "/cotizacion/change/USD";
+            ViewData["url"] = "https://localhost:" + Request.Host.Port + "/cotizacion/USD";
 
             return View(quotation);
 
@@ -57,7 +57,7 @@ namespace Conversions.Controllers
 
             ViewData["moneda"] = quotation.Value.moneda;
             ViewData["precio"] = quotation.Value.precio;
-            ViewData["url"] = "https://localhost:" + Request.Host.Port + "/cotizacion/change/BRL";
+            ViewData["url"] = "https://localhost:" + Request.Host.Port + "/cotizacion/BRL";
             return View(quotation);
            
         }
@@ -70,7 +70,7 @@ namespace Conversions.Controllers
 
             ViewData["moneda"] = quotation.Value.moneda;
             ViewData["precio"] = quotation.Value.precio;
-            ViewData["url"] = "https://localhost:"+ Request.Host.Port + "/cotizacion/change/EUR" ;
+            ViewData["url"] = "https://localhost:"+ Request.Host.Port + "/cotizacion/EUR" ;
             return View(quotation);
 
         }
