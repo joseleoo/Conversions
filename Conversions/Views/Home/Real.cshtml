@@ -21,13 +21,13 @@
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <a href=@ViewData["url"] tabindex="0" class="btn btn-outline-secondary" role="button" data-toggle="popover" data-trigger="focus" title="Abrir url en otra pestaña"
-                   data-content="Haga clic aquí para ver en otra pestaña servicio" target="right"> Abrir url</a>
+                   data-content="Haga clic aquí para ver en otra pestaña servicio" target=@ViewData["moneda"]> Abrir url</a>
             </div>
             <input id="inputUrl" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value=@ViewData["url"]>
             <div class="input-group-append">
-                <button tabindex="0" onclick="copy()" class="btn btn-outline-secondary" role="button" data-toggle="popover" data-trigger="focus" title="Copiar al portapapeles"
+                <button tabindex="0" onclick="copyToClipboard()" class="btn btn-outline-secondary" role="button" data-toggle="popover" data-trigger="focus" title="Copiar al portapapeles"
                         data-content="Haga clic aquí para ver en otra pestaña servicio" target="right" type="button">
-                    Copiar
+                    Copiar url
                 </button>
             </div>
         </div>

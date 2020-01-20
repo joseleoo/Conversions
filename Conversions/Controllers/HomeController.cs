@@ -33,7 +33,7 @@ namespace Conversions.Controllers
             }
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Dolar()
         {
         
 
@@ -43,7 +43,7 @@ namespace Conversions.Controllers
 
             ViewData["moneda"] = quotation.Value.moneda;
             ViewData["precio"] = quotation.Value.precio;
-            ViewData["url"] = "https://localhost:" + Request.Host.Port + "/cotizacion/USD";
+            ViewData["url"] = "https://localhost:" + Request.Host.Port + "/cotizacion/dolar";
 
             return View(quotation);
 
@@ -57,7 +57,7 @@ namespace Conversions.Controllers
 
             ViewData["moneda"] = quotation.Value.moneda;
             ViewData["precio"] = quotation.Value.precio;
-            ViewData["url"] = "https://localhost:" + Request.Host.Port + "/cotizacion/BRL";
+            ViewData["url"] = "https://localhost:" + Request.Host.Port + "/cotizacion/real";
             return View(quotation);
            
         }
@@ -70,7 +70,7 @@ namespace Conversions.Controllers
 
             ViewData["moneda"] = quotation.Value.moneda;
             ViewData["precio"] = quotation.Value.precio;
-            ViewData["url"] = "https://localhost:"+ Request.Host.Port + "/cotizacion/EUR" ;
+            ViewData["url"] = "https://localhost:"+ Request.Host.Port + "/cotizacion/euro" ;
             return View(quotation);
 
         }

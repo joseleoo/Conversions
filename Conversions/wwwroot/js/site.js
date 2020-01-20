@@ -15,7 +15,7 @@ $('.popover-dismiss').popover({
     trigger: 'focus'
 });
 
-function copy() {
+function copyToClipboard() {
     /* Get the text field */
     var copyText = document.getElementById("inputUrl");
 
