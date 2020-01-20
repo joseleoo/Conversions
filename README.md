@@ -7,4 +7,4 @@ con su respectiva url.
 La app tiene dos proyectos Conversions y CoinsApi. La app debe correr mediante el proyecto "Conversions".
 Conversions contiene la interfaz gráfica mientras que CoinsApi consume y genera las Api's.
 
-Espero les guste.
+Espero les guste. Estoy atento a cualquer sugerencia y/u opinión.
