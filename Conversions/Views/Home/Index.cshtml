@@ -1,20 +1,36 @@
 ﻿@{
     ViewData["Title"] = "Dolars";
- }
-    <head>
-   
-    </head>
-    <div class="text-center">
+}
+<head>
 
-        <div class="jumbotron">
-            <h1 class="display-4">Bienvenido</h1>
+</head>
+<div class="text-center">
+
+    <div class="jumbotron">
+        <h1 class="display-4">Bienvenido</h1>
+        <div class="alert alert-primary" role="alert">
             <p> Un peso argentino (ARS) es igual a</p>
-            <h2>@ViewData["precio"] </h2>
+            <h2>$@ViewData["precio"] </h2>
             <h2> Dolar(es) (@ViewData["moneda"]) </h2>
-            <hr class="my-4">
-            <p>Para ver la url del servicio haga clic en botón de abajo</p>
-            <a href=@ViewData["url"] tabindex="0" class="btn-sm btn-info" role="button" data-toggle="popover" data-trigger="focus" title="Abrir url del servicio"
-               data-content="Haga clic aquí para ver en otra pestaña servicio" target="right"> Url del servicio</a>
+        </div>
+        <hr class="my-4">
+        <div id="copied" class="alert alert-success" role="alert" style="display:none">
+            ¡URL copiada al portapapeles!
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <a href=@ViewData["url"] tabindex="0" class="btn btn-outline-secondary" role="button" data-toggle="popover" data-trigger="focus" title="Abrir url en otra pestaña"
+                   data-content="Haga clic aquí para ver en otra pestaña servicio" target="right"> Abrir url</a>
+            </div>
+            <input id="inputUrl" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value=@ViewData["url"]>
+            <div class="input-group-append">
+                <button tabindex="0" onclick="copy()" class="btn btn-outline-secondary" role="button" data-toggle="popover" data-trigger="focus" title="Copiar al portapapeles"
+                   data-content="Haga clic aquí para ver en otra pestaña servicio" target="right" type="button">
+                    Copiar
+                </button>
+            </div>
         </div>
 
     </div>
+
+</div>
