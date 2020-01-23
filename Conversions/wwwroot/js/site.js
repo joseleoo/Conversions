@@ -28,4 +28,13 @@ function copyToClipboard() {
     $('#copied').show();
     $('#copied').fadeOut(2000);
 }
+/**
+ * get the years'bith and return the age
+ * @param {Array} ages
+ */
+function arrayMapExample(ages) {
+
+
+
+}
 

@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Personal Study</h1>
+<h2>Función .map</h2>
+
+<p>En esta sección se muestran algunas ejercicios sobre temas que debo repasar o mejorar.</p>
+
+<p>La función .map sirve para aplicar el mismo método a cada uno de los elementos de un array.</p>
+<p>Haga clic en el botón para obtener la raiz cuadrada de cada elemento del <strong>array (4, 9, 16, 25)</strong> .</p>
+
+<button onclick="myFunction()">Probar</button>
+
+<p id="demo"></p>
+
+<script>
+var numbers = [4, 9, 16, 25];
+
+function myFunction() {
+  x = document.getElementById("demo")
+  x.innerHTML = numbers.map(Math.sqrt);
+}
+</script>
