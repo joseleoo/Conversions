@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "Closure";
+}
+
+
+<div class="jumbotron">
+    <h1 class="display-4">Closure</h1>
+    <p class="lead">Los closures o clausuras son funciones que manejan variables independientes. </p>
+
+
+
+    <hr class="my-4">
+    <p>En el siguiente ejemplo se utiliza una closure para aumentar o disminuir el tamaña de fuente/p>
+    <p><strong>Código: </strong></p>
+    <div class="alert alert-dark" role="alert">
+        function makeSizer(size) {<br />
+        return function () {<br />
+        document.body.style.fontSize = size + 'px';<br />
+        };<br />
+        }<br />
+
+        var size12 = makeSizer(12);<br />
+        var size14 = makeSizer(14);<br />
+        var size16 = makeSizer(16);<br />
+
+        document.getElementById('size-12').onclick = size12;<br />
+        document.getElementById('size-14').onclick = size14;<br />
+        document.getElementById('size-16').onclick = size16;<br />
+    </div>
+    <p class="lead">
+
+        <a class="btn btn-primary"  href="#" id="size-12">12</a>
+        <a class="btn btn-primary" href="#" id="size-14">14</a>
+        <a class="btn btn-primary"  href="#" id="size-16">16</a>
+    </p>
+
+
+
+</div>
+<script>
+    function makeSizer(size) {
+        return function () {
+            document.body.style.fontSize = size + 'px';
+        };
+    }
+
+    var size12 = makeSizer(12);
+    var size14 = makeSizer(14);
+    var size16 = makeSizer(16);
+
+    document.getElementById('size-12').onclick = size12;
+    document.getElementById('size-14').onclick = size14;
+    document.getElementById('size-16').onclick = size16;
+</script>

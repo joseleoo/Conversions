@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Map";
+}
+
+
+
+<div class="jumbotron">
+    <h1 class="display-4">Función .map</h1>
+    <p class="lead">La función .map sirve para aplicar el mismo método a cada uno de los elementos de un array.</p>
+
+
+
+    <hr class="my-4">
+    <p>En el siguiente ejemplo se obtiene la raiz cuadrada por cada elemento del array</p>
+    <p><strong>Código: </strong></p>
+    <div class="alert alert-dark" role="alert">
+        var numbers = [4, 9, 16, 25];
+
+        function myFunction() {
+        x = document.getElementById("demo")
+        x.innerHTML = numbers.map(Math.sqrt);
+        }
+    </div>
+    <p class="lead">
+
+        <button class="btn btn-primary btn-lg" onclick="myFunction()">Probar</button>
+    </p>
+    <div class="alert alert-success" style="display:none" id="demo" role="alert">
+        <p id="demo"></p>
+    </div>
+</div>
+
+
+
+<script>
+    var numbers = [4, 9, 16, 25];
+
+    function myFunction() {
+        x = document.getElementById("demo")
+        $('#demo').show();
+        
+        x.innerHTML = numbers.map(Math.sqrt);
+    }
+</script>
