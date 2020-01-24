@@ -31,8 +31,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Real">Real</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="PersonalStudy" asp-action="Index">Autodidacta</a>
+                        <li class="nav-item  dropdown">
+                          
+                            <a class="nav-link dropdown-toggle text-light" asp-area="" asp-controller="PersonalStudy" asp-action="Index" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Personal Study
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-area="" asp-controller="PersonalStudy" asp-action="Index">Índice</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="PersonalStudy" asp-action="Map">Función Map</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="PersonalStudy" asp-action="Closure">Closure</a>
+                                @*<div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Something else here</a>*@
+                            </div>
                         </li>
                     </ul>
                 </div>

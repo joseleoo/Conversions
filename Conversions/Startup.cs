@@ -54,7 +54,7 @@ namespace Conversions
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=PersonalStudy}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Dolar}/{id?}");
             });
         }
     }

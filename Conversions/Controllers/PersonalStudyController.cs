@@ -12,5 +12,14 @@ namespace Conversions.Controllers
         {
             return View();
         }
+        public IActionResult Map()
+        {
+            return View();
+        }
+        public IActionResult Closure()
+        {
+            return View();
+        }
+
     }
 }
