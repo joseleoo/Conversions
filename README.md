@@ -7,6 +7,6 @@ con su respectiva url.
 La app tiene dos proyectos Conversions y CoinsApi. La app debe correr mediante el proyecto "Conversions".
 Conversions contiene la interfaz gráfica mientras que CoinsApi consume y genera las Api's.
 
-En la rama feature-exercises-to-improve estan ejercicios de temas que según me reveló la evaluación debe repasar o mejorar
+En la app aparece un menú con las tres monedas y con un menu "Personal Study" que contiene ejercicios de temas que según me reveló la evaluación debe repasar o mejorar
 
 Espero les guste. Estoy atento a cualquer sugerencia y/u opinión.
