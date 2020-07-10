@@ -10,3 +10,5 @@ Conversions contiene la interfaz gráfica mientras que CoinsApi consume y genera
 En la app aparece un menú con las tres monedas y con un menu "Personal Study" que contiene ejercicios de temas que según me reveló la evaluación debe repasar o mejorar
 
 Espero les guste. Estoy atento a cualquer sugerencia y/u opinión.
+
+Si deseas verla solicitame el link a 316 898 2961, desarrollojlq@outlook.es o jose-leonardo en linked-in
